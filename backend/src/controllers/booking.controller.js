@@ -1,5 +1,5 @@
 const db = require("../config/db");
-
+const sendSMS = require("../services/sms.service");
 // Helper to pad numbers
 function pad(num, size) {
   let s = "000" + num;
@@ -51,12 +51,23 @@ exports.createBooking = (req, res) => {
 
                   const queue_number = service_code + pad(queueNum, 3);
 
+
                   // 4. Insert queue
                   db.query(
                     "INSERT INTO queues (queue_number, customer_id, service_id, till_id) VALUES (?, ?, ?, ?)",
                     [queue_number, customer_id, service_id, till_id],
                     (err) => {
                       if (err) return res.status(500).json({ message: err.message });
+
+                      // --- Send SMS ---
+                      const message = `Hello ${name}, your queue number is ${queue_number}. Please proceed to Till ${till_number}.`;
+                       sendSMS(phone, message)
+                       .then((response) => {
+                        console.log("SMS sent successfully:", response);
+                      })
+                      .catch((err) => {
+                        console.error("SMS failed:", err);
+                     });
 
                       // 5. Return receipt data
                       res.json({
