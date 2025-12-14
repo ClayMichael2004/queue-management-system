@@ -37,3 +37,21 @@ WAITING → SERVING → COMPLETED
 - Printable receipt
 - SMS notifications
 - Admin & cashier dashboards
+
+
+## Database Design
+
+### Tables
+- services
+- tills
+- customers
+- queues
+- users
+
+### Queue Status
+WAITING → SERVING → COMPLETED
+
+### Relationships
+- One service has many queues
+- One till handles one service
+- One customer can have multiple queue entries
