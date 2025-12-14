@@ -6,11 +6,13 @@ const db = require("./config/db");
 const app = express();
 const bookingRoutes = require("./routes/booking.routes");
 const tillRoutes = require("./routes/till.routes");
+const adminRoutes = require("./routes/admin.routes");
 
 app.use(cors());
 app.use(express.json());
 app.use("/api", bookingRoutes);
 app.use("/api", tillRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {
   res.send("Queue Management System API running");
