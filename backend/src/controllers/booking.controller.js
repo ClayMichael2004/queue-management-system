@@ -62,7 +62,9 @@ exports.createBooking = (req, res) => {
                       res.json({
                         queue_number,
                         till_number,
+                        service: { id: service_id, name: serviceResult[0].name },
                         customer: { id: customer_id, name, phone },
+                        created_at: new Date().toISOString()
                       });
                     }
                   );
