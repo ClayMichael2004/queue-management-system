@@ -1,0 +1,146 @@
+/* Full-screen kiosk feel */
+.booking-shell {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Main card */
+.booking-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  padding: 48px;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* Titles */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 32px;
+}
+
+/* Form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.booking-form input,
+.booking-form select {
+  padding: 14px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  border-color: #2563eb;
+}
+
+/* Primary button */
+.booking-form button {
+  margin-top: 10px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.booking-form button:hover {
+  background: #1e40af;
+}
+
+/* Receipt */
+.receipt {
+  text-align: center;
+}
+
+.receipt-title {
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+
+/* Queue highlight */
+.queue-box {
+  margin: 28px 0;
+  padding: 20px;
+  border-radius: 16px;
+  background: #f1f5f9;
+}
+
+.queue-box span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.queue-box h1 {
+  margin: 8px 0 0;
+  font-size: 48px;
+  letter-spacing: 3px;
+}
+
+/* Print button */
+.print-btn {
+  margin-top: 30px;
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.print-btn:hover {
+  background: #15803d;
+}
+
+/* Print-only styling */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .receipt,
+  .receipt * {
+    visibility: visible;
+  }
+
+  .receipt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .print-btn {
+    display: none;
+  }
+}
