@@ -33,7 +33,7 @@ exports.createBooking = (req, res) => {
 
           // 3. Get service code and till
           db.query(
-            "SELECT code FROM services WHERE id = ?",
+            "SELECT code, name FROM services WHERE id = ?",
             [service_id],
             (err, serviceResult) => {
               if (err) return res.status(500).json({ message: err.message });
