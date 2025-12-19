@@ -52,3 +52,19 @@ exports.completeQueue = (req, res) => {
     }
   );
 };
+
+exports.getTillById = (req, res) => {
+  const { id } = req.params;
+  db.query(
+    `SELECT t.id, t.till_number, s.name AS service_name
+     FROM tills t
+     JOIN services s ON t.service_id = s.id
+     WHERE t.id = ?`,
+    [id],
+    (err, results) => {
+      if (err) return res.status(500).json({ message: err.message });
+      if (results.length === 0) return res.status(404).json({ message: "Till not found" });
+      res.json(results[0]);
+    }
+  );
+};
