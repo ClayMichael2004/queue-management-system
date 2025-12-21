@@ -8,7 +8,7 @@ const {
 const { verifyToken, allowRoles } = require("../middleware/auth");
 
 // Only secretaries (CASHIER) can access queues
-router.get("/", verifyToken, allowRoles("CASHIER"), getQueuesByTill);
+router.get("/", verifyToken, allowRoles("ADMIN", "CASHIER"), getQueuesByTill);
 router.post("/serve", verifyToken, allowRoles("CASHIER"), markServed);
 
 // Only admin can call next queue (optional)

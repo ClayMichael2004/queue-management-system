@@ -33,6 +33,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+         path="/admin" 
+         element={<ProtectedRoute role="ADMIN">
+          <Admin />
+          </ProtectedRoute>
+        } 
+        />
+
 
         {/* Display board - no login required */}
         <Route path="/display" element={<DisplayBoard />} />

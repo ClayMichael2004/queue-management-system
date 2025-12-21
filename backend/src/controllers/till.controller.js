@@ -68,3 +68,15 @@ exports.getTillById = (req, res) => {
     }
   );
 };
+
+exports.getAllTills = (req, res) => {
+  db.query(
+    `SELECT t.id, t.till_number, s.id AS service_id, s.name AS service_name
+     FROM tills t
+     JOIN services s ON t.service_id = s.id`,
+    (err, results) => {
+      if (err) return res.status(500).json({ message: err.message });
+      res.json(results);
+    }
+  );
+};
